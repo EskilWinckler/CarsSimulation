@@ -45,10 +45,10 @@ public class View extends JPanel {
 
         // Pit stop område
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(500, 550, 200, 60);
+        g.fillRect(500, 500, 200, 60);
         g.setColor(Color.BLACK);
-        g.drawRect(500, 550, 200, 60);
-        g.drawString("PIT STOP", 575, 585);
+        g.drawRect(500, 500, 200, 60);
+        g.drawString("PIT STOP", 575, 535);
     }
 
     private void drawCar(Graphics2D g, double x, double y, double angle) {
@@ -78,7 +78,7 @@ public class View extends JPanel {
     public static void update() {
         // Här läggs fysikberäkningar senare
         // Just nu: bara lite snurr för att se att det lever
-        carAngle += 1;
+        carAngle += 15;
     }
 
     public static void main(String[] args) {
