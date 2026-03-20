@@ -1,2 +1,3 @@
-public class Tanker extends Pitcrew{
+/*public class Tanker extends Pitcrew{
 }
+*/

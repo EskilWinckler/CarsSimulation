@@ -7,27 +7,31 @@ import java.awt.event.KeyListener;
 // Den här koden är väldigt AI-genererad
 public class View extends JPanel {
     // Fönsterinställningar
-    static int windowWidth = 1200;
-    static int windowHeight = 800;
+    static int windowWidth; //default from AI slop: 1200
+    static int windowHeight; // default from AI slop: 800
 
     // Enkel bil-modell för visualisering (flyttas till egen klass senare)
     static double carX = 100;
     static double carY = 100;
     static double carAngle = 0;
 
-    public View() {
+    public View(int windowWidth, int windowHeight, Color colour) {
         this.setPreferredSize(new Dimension(windowWidth, windowHeight));
-        this.setBackground(new Color(34, 139, 34)); // Gräsmatta (Forest Green)
+        this.setBackground(colour); // Gräsmatta (Forest Green)
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        // render function
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         drawTrack(g2d);
         drawCar(g2d, carX, carY, carAngle);
+        int[] color = {255, 0, 0};
+        Racecar racecar = new Racecar(new int[]{255, 0, 0}, 360, 1, new int[]{40,40}, 1, new int[]{40,20});
+        drawVehicle(g2d, racecar);
         drawUI(g2d);
     }
 
@@ -51,6 +55,21 @@ public class View extends JPanel {
         g.drawString("PIT STOP", 575, 535);
     }
 
+    private void drawVehicle(Graphics2D g, Vehicle vehicle) {
+        // rewrite from AI code to draw vehicle objects
+        // draw at these coordinates
+        g.translate(vehicle.getCoordinates()[0], vehicle.getCoordinates()[1]);
+        g.rotate(Math.toRadians(vehicle.getFacingAngle()));
+        //create color object from color information in vehicle, could alternatively store Color object in Vehicle object TODO
+        Color color = new Color(vehicle.getColour()[0], vehicle.getColour()[1], vehicle.getColour()[2]);
+        // set colour for drawing
+        g.setColor(color);
+        // draws the rect centered at the provided coordinates
+        g.fillRect(-vehicle.getDimensions()[0]/2, -vehicle.getDimensions()[1]/2, vehicle.getDimensions()[0], vehicle.getDimensions()[1]);
+        // I think this resets the drawing angles?
+        g.rotate(-Math.toRadians(vehicle.getFacingAngle()));
+        g.translate(-vehicle.getCoordinates()[0], -vehicle.getDimensions()[1]);
+    }
     private void drawCar(Graphics2D g, double x, double y, double angle) {
         g.translate(x, y);
         g.rotate(Math.toRadians(angle));
@@ -83,7 +102,7 @@ public class View extends JPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Racing Simulator");
-        View gameView = new View();
+        View gameView = new View(1200, 800, new Color(30, 120, 30));
 
         frame.add(gameView);
         frame.pack();
