@@ -3,8 +3,6 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
-// Den här koden är väldigt AI-genererad
 public class View extends JPanel {
     // Fönsterinställningar
     static int windowWidth; //default from AI slop: 1200
@@ -30,9 +28,10 @@ public class View extends JPanel {
         drawTrack(g2d);
         drawCar(g2d, carX, carY, carAngle);
         int[] color = {255, 0, 0};
-        Racecar racecar = new Racecar(new int[]{255,255,0}, 1, 3.14, new int[]{100, 100}, 1, new int[]{40,20});
+        Racecar racecar = new Racecar(new int[]{255,255,0}, 1, 2,3.14, new int[]{100, 100}, 1, new int[]{40,20});
         drawVehicle(g2d, racecar);
         drawUI(g2d);
+        drawPoint(g2d);
     }
 
     private void drawTrack(Graphics2D g) {
@@ -49,10 +48,10 @@ public class View extends JPanel {
 
         // Pit stop område
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(500, 500, 200, 60);
+        g.fillRect(500, 550, 200, 60);
         g.setColor(Color.BLACK);
-        g.drawRect(500, 500, 200, 60);
-        g.drawString("PIT STOP", 575, 535);
+        g.drawRect(500, 550, 200, 60);
+        g.drawString("PIT STOP", 575, 585);
     }
 
     private void drawVehicle(Graphics2D g, Vehicle vehicle) {
@@ -87,6 +86,14 @@ public class View extends JPanel {
         g.translate(-x, -y);
     }
 
+    private void drawPoint(Graphics2D g) {
+        g.setColor(Color.MAGENTA);
+        g.fillOval(90,350, 10, 10);
+        g.fillOval(600,100, 10, 10);
+        g.fillOval(1110,350, 10, 10);
+        g.fillOval(600,600, 10, 10);
+    }
+
     private void drawUI(Graphics2D g) {
         g.setColor(Color.WHITE);
         g.setFont(new Font("Arial", Font.BOLD, 14));
@@ -97,7 +104,7 @@ public class View extends JPanel {
     public static void update() {
         // Här läggs fysikberäkningar senare
         // Just nu: bara lite snurr för att se att det lever
-        carAngle += 15;
+        carAngle += 1;
     }
 
     public static void main(String[] args) {

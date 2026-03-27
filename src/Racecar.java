@@ -3,17 +3,21 @@ public class Racecar extends Vehicle implements PhysicsBasedVehicle {
     private int thrustForce;
     private int mass;
     private int[] colour;
+    private int facingAngle;
     private double facingAngleRad; // we might need this?
     private int[] coordinates;
     private int[] dimensions;
+    private Ground currentGround; //change name?
 
-    public Racecar(int[] colour, int thrustForce, double facingAngleRad, int[] coordinates, int mass, int[] dimensions){
+    public Racecar(int[] colour, int facingAngle, int thrustForce, double facingAngleRad, int[] coordinates, int mass, int[] dimensions){
         this.colour = colour;
+        this.facingAngle = facingAngle;
         this.thrustForce = thrustForce;
         this.facingAngleRad = facingAngleRad;
         this.coordinates = coordinates;
         this.mass = mass;
         this.dimensions = dimensions;
+        this.currentGround = new Ground("asphalt");
     }
     @Override
     public int[] getPreviousForceVector() {
@@ -38,6 +42,10 @@ public class Racecar extends Vehicle implements PhysicsBasedVehicle {
     @Override
     public int[] getColour() {
         return colour;
+    }
+
+    public int getFacingAngle() {
+        return facingAngle;
     }
 
     public double getFacingAngleRad() {

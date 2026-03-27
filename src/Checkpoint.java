@@ -9,4 +9,7 @@ public class Checkpoint {
         return coordinates;
     }
 
+    //private void hardCoded() {
+    //    [[90,350],[600,100],[1110,350],[600,600]]
+    //}
 }
