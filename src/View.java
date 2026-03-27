@@ -30,7 +30,7 @@ public class View extends JPanel {
         drawTrack(g2d);
         drawCar(g2d, carX, carY, carAngle);
         int[] color = {255, 0, 0};
-        Racecar racecar = new Racecar(new int[]{255, 0, 0}, 360, 1, new int[]{40,40}, 1, new int[]{40,20});
+        Racecar racecar = new Racecar(new int[]{255,255,0}, 1, 3.14, new int[]{100, 100}, 1, new int[]{40,20});
         drawVehicle(g2d, racecar);
         drawUI(g2d);
     }
@@ -59,7 +59,7 @@ public class View extends JPanel {
         // rewrite from AI code to draw vehicle objects
         // draw at these coordinates
         g.translate(vehicle.getCoordinates()[0], vehicle.getCoordinates()[1]);
-        g.rotate(Math.toRadians(vehicle.getFacingAngle()));
+        g.rotate(vehicle.getFacingAngleRad());
         //create color object from color information in vehicle, could alternatively store Color object in Vehicle object TODO
         Color color = new Color(vehicle.getColour()[0], vehicle.getColour()[1], vehicle.getColour()[2]);
         // set colour for drawing
@@ -67,7 +67,7 @@ public class View extends JPanel {
         // draws the rect centered at the provided coordinates
         g.fillRect(-vehicle.getDimensions()[0]/2, -vehicle.getDimensions()[1]/2, vehicle.getDimensions()[0], vehicle.getDimensions()[1]);
         // I think this resets the drawing angles?
-        g.rotate(-Math.toRadians(vehicle.getFacingAngle()));
+        g.rotate(-vehicle.getFacingAngleRad());
         g.translate(-vehicle.getCoordinates()[0], -vehicle.getDimensions()[1]);
     }
     private void drawCar(Graphics2D g, double x, double y, double angle) {

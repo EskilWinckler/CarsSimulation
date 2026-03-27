@@ -18,4 +18,7 @@ public class Physics {
         // I have a strong feeling that we'll need to refactor the code to only use radians. (aka doubles)
         return new float[]{(float) (Math.cos(angle)*force), (float) (Math.sin(angle)*force)};
     }
+
+
+
 }
