@@ -1,14 +1,31 @@
+import java.awt.*;
+
 public abstract class Vehicle {
-    protected int[] coordinates;
-    protected int[] colour;
+    protected double[] currentCoordinates;
+    protected Color primaryColour;
+    protected Color secondaryColour;
     protected double facingAngleRad;
     protected int[] dimensions;
 
-    public abstract int[] getCoordinates();
+    public Color getPrimaryColour() {
+        return primaryColour;
+    }
 
-    public abstract int[] getColour();
+    public double[] getCurrentCoordinates() {
+        return currentCoordinates;
+    }
 
-    public abstract double getFacingAngleRad();
+    public Color getSecondaryColour() {
+        return secondaryColour;
+    }
 
-    public abstract int[] getDimensions();
+    public double getFacingAngleRad() {
+        return facingAngleRad;
+    }
+
+    public int[] getDimensions() {
+        return dimensions;
+    }
+
+
 }

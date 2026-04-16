@@ -1,6 +1,13 @@
 public interface PhysicsBasedVehicle {
-    int[] getPreviousForceVector();
-    int getThrustForce();
-    int getMass();
+    double getMass();
+
+    double getEnginePower();
+
+    double getTraction();
+
+    double getDrag();
+
+    double getCurrentVelocity();
+
 
 }
