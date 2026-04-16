@@ -1,16 +1,15 @@
 public class Checkpoint {
-    protected double[] coordinates;
+    int[] coordinates;
 
-    public Checkpoint(double[] coordinates) {
-        this.coordinates = coordinates;
+    public Checkpoint(int x, int y) {
+        this.coordinates = new int[]{x, y};
     }
 
-    public double[] getCoordinates() {
+    public int[] getCoordinates() {
         return coordinates;
     }
-    public void setCoordinates(double[] coordinates){
-        this.coordinates=coordinates;
-    }
 
-
+    //private void hardCoded() {
+    //    [[90,350],[600,100],[1110,350],[600,600]]
+    //}
 }
